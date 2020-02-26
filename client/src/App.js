@@ -7,14 +7,14 @@ import store from './store'
 import Navbar from './components/Layout/Navbar'
 import Footer from './components/Layout/Footer'
 import Home from './components/Homepage/Home'
-import Category from './components/Category/Category'
-import SingleCategory from './components/Category/SingleCategory'
-import Product from './components/Product/Product'
+import Category from './components/Category/Categories'
+import SingleCategory from './components/Category/CategoryProduct'
+import Product from './components/Product/Products'
 
 function App() {
   return (
     <Provider store={store}>
-      <div className="App lead justify-content-center">
+      <div className="App lead row justify-content-center">
         <Router>
         <Navbar/>
           <Switch>

@@ -13,13 +13,14 @@ export const getCategory = () => dispatch => {
         )
 }
 
-export const getCategoryProducts = id => dispatch => {
+export const getCategoryProducts = (id) => dispatch => {
+    dispatch(categoryLoading())
     axios
-        .get(`http://localhost:8000/categories/product/${id}`)
+        .get(`http://localhost:8000/categories/products/${id}`)
         .then(res =>
             dispatch({
                 type: GET_CATEGORY_PRODUCT,
-                payload: id
+                payload: res.data
             })    
         )
 }

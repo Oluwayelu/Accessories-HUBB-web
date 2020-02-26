@@ -1,37 +1,26 @@
-import React, { Component } from 'react'
-import { Container } from 'reactstrap'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { getCategory } from '../../actions/categoryActions'
-import PropTypes from 'prop-types'
+import React from 'react'
+import {
+    Col,
+    Card,
+    CardImg,
+    CardHeader,
+    CardBody
+} from 'reactstrap'
+import {Link} from 'react-router-dom'
 
-class Category extends Component {
-    componentDidMount(){
-        this.props.getCategory()
-    }
-    render(){
-        const { categories } = this.props
-        return(
-            <Container>
-                {
-                    categories.map(({_id, name}) => (
-                        <Link to={`/categories/product/${_id}`} key={_id} className="row justify-content-center">{name}</Link>
-                    ))
-                }
-            </Container>
-        )
-    } 
-}
+const Category = (props) => {
+    
+    return (
+        <Col md={4} className='mb-5'>
+            <Card body outline color='warning'>
+                <CardHeader>{props.name}</CardHeader>
+                <CardImg top width="100%" src={require('../../img/a-hubb/mouse/mouse-2.jpg')} alt={props.name}/>
+                <CardBody>
+                    <Link to={'/categories/'+props.id} className='btn btn-warning btn-lg'><i className="fa fa-arrow-circle-right"/></Link>
+                </CardBody>
+            </Card>
+        </Col>
+    );
+};
 
-Category.propTypes = {
-    getCategory: PropTypes.func.isRequired,
-    categories: PropTypes.array.isRequired
-}
-
-const mapStateToProps = (state) => {
-    return ({
-        categories: state.category.categories
-    })
-}
-
-export default connect(mapStateToProps, { getCategory })(Category)
+export default Category;

@@ -22,12 +22,13 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Category.findOne({_id: req.params.id})
         .then(cat => res.json(cat))
+        .sort({ createdAt: 1})
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
-router.get('/product/:id', (req, res) => {
+router.get('/products/:id', (req, res) => {
     Products.find({ category: req.params.id })
-        .then(product => product.length > 0 ? res.json(product) : res.json('There is no product yet.'))
+        .then(product => res.json(product))
         .catch(err => res.status(400).json('Error: ' + err))
 })
 

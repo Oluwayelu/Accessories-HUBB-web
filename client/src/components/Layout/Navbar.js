@@ -12,6 +12,7 @@ import {
     NavbarToggler,
     CardImg,
     Input,
+    Badge,
     InputGroup,
     InputGroupAddon,
     Button
@@ -24,16 +25,13 @@ const AppNavbar = () => {
     return (
         <div>
             <Navbar expand="sm">
-                <Container>
                     <NavbarBrand className="a-hubb">
                         <div className="row">
                             <div className="logo"></div>
                         </div>
                     </NavbarBrand>
-                </Container>
             </Navbar>
             <Navbar color="warning" expand="sm" className="logo-navbar mb-5">
-                <Container>
                     <NavbarBrand href="/">
                     <div className="row">
                             <div className="logo">
@@ -45,13 +43,13 @@ const AppNavbar = () => {
                     <Collapse isOpen={isOpen} navbar className="offcanvas-collapse">
                         <Nav className="mr-auto" navbar>
                             <NavItem>
-                                <NavLink href="/">Home</NavLink>
+                                <NavLink href="/">Home <i className="fas fa-home"/></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/categories">Categories</NavLink>
+                                <NavLink href="/categories">Categories <i className="fas fa-list-alt"/></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/cart">Cart <i className="fas fa-shopping-cart"/></NavLink>
+                                <NavLink href="/cart">Cart <i className="fas fa-shopping-cart"/><Badge color="primary" pill>2</Badge></NavLink>
                             </NavItem>
                         </Nav>
                         <Nav>
@@ -62,7 +60,7 @@ const AppNavbar = () => {
                                             <Input placeholder="Search"/>
                                             <InputGroupAddon addonType="prepend">
                                                 <Button color="primary" className="search-button">
-                                                    Search
+                                                <i className="fas fa-search"/>
                                                 </Button>
                                             </InputGroupAddon>
                                         </InputGroup>
@@ -71,7 +69,6 @@ const AppNavbar = () => {
                             </NavItem>
                         </Nav>
                     </Collapse>
-                </Container>
             </Navbar>
         </div>
     );

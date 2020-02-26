@@ -1,37 +1,46 @@
-import React, { Component } from 'react'
-import { Container } from 'reactstrap'
-import { connect } from 'react-redux'
+import React from 'react'
+import {
+    Col,
+    Row,
+    Card,
+    CardTitle,
+    CardSubtitle,
+    CardImg,
+    CardBody,
+    CardText,
+    CardFooter
+} from 'reactstrap'
 import { Link } from 'react-router-dom'
-import { getProduct } from '../../actions/prodoctActions'
-import PropTypes from 'prop-types'
+import Ratings from '../Common/Ratings'
 
-class Category extends Component {
-    componentDidMount(){
-        this.props.getProduct()
-    }
-    render(){
-        const { products } = this.props
-        return(
-            <Container>
-                {
-                    products.map(({_id, name}) => (
-                        <Link to={`/products/${_id}`} key={_id} className="row justify-content-center">{name}</Link>
-                    ))
-                }
-            </Container>
-        )
-    } 
-}
+const Product = (props) => {
+    return (
+        <Col md={12} className='justify-content-center mb-5'>
+            <Card body outline color='warning'>
+                <Row>
+                    <Col md={6}>
+                        <CardImg top width="100%" src={require('../../img/a-hubb/earpiece/iphone-3.jpeg')} alt={props.name}/>
+                        
+                    </Col>
+                    <Col md={6}>
+                        <CardBody>
+                            <CardTitle>{props.name}</CardTitle>
+                            <CardSubtitle>&#8358;{props.price}</CardSubtitle>
+                            <CardText>In Stock: {props.totalQuantity}</CardText>
+                        </CardBody>
+                        <br/>
+                        <Ratings/>
+                        <br/>
+                        <CardFooter>
+                            <Link to={'/categories/product/'+props.id} className='btn btn-warning btn-lg'>Buy <i className="fas fa-shopping-cart"/></Link>
+                        </CardFooter>
 
-Category.propTypes = {
-    getProduct: PropTypes.func.isRequired,
-    products: PropTypes.array.isRequired
-}
+                    </Col>
+                </Row>
+             </Card>
+        </Col>
+            
+    );
+};
 
-const mapStateToProps = (state) => {
-    return ({
-        products: state.product.products
-    })
-}
-
-export default connect(mapStateToProps, { getProduct })(Category)
+export default Product;
