@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Oluwayelu#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bootstrap-icons": "^1.0.0-alpha2",
     "config": "^3.2.5",
